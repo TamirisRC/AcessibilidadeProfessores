@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="pt">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Professores CRUD</title>
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/src/style.css" />
+    <script src="https://unpkg.com/vue@3.2.31"></script>
+  </head>
+
+  <body>
+    <div id="app">
+      <nav
+        class="navbar d-flex justify-content-between"
+        :class="{ 'high-contrast': isHighContrast }"
+        style="background-color: #6db8ff"
+      >
+        <div class="container">
+          <h2 class="text-center w-100">Conta dos Professores</h2>
+        </div>
+        <button
+          class="accessibility-btn"
+          aria-label="Acessibilidade"
+          @click="toggleAccessibilityMenu"
+        >
+          <img
+            src="src/assets/acessibilidade.png"
+            alt="Ícone de acessibilidade"
+          />
+        </button>
+        <div v-if="accessibilityMenuVisible" class="accessibility-menu">
+          <button @click="toggleContrast" class="btn btn-light">Contraste</button>
+          <button @click="increaseFontSize" class="btn btn-light">A+</button>
+          <button @click="decreaseFontSize" class="btn btn-light">A-</button>
+        </div>
+      </nav>
+
+      <div class="container mt-5">
+        <table class="table table-bordered table-striped">
+          <thead>
+            <tr>
+              <th>Nome</th>
+              <th>CPF</th>
+              <th>ID</th>
+              <th>E-mail</th>
+              <th>Cargo</th>
+              <th>Status</th>
+              <th>Ação</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="(professor, index) in professores" :key="index">
+              <td>{{ professor.nome }}</td>
+              <td>{{ professor.cpf }}</td>
+              <td>{{ professor.id }}</td>
+              <td>{{ professor.email }}</td>
+              <td>{{ professor.cargo }}</td>
+              <td>{{ professor.ativo ? 'Ativo' : 'Desativado' }}</td>
+              <td>
+                <button
+                  class="btn btn-primary btn-sm"
+                  @click="editProfessor(index)"
+                >
+                  Editar
+                </button>
+                <button
+                  class="btn btn-danger btn-sm"
+                  @click="confirmDelete(index)"
+                >
+                  {{ professor.ativo ? 'Desativar' : 'Reativar' }}
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <button class="btn btn-success" @click="showAddModal">Adicionar</button>
+      </div>
+
+      <div v-if="showModal" class="modal fade show" style="display: block">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">
+                {{ isEditing ? 'Editar' : 'Adicionar' }}
+              </h5>
+              <button type="button" class="close" @click="closeModal">
+                <span aria-hidden="true">×</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form
+                @submit.prevent="isEditing ? updateProfessor() : addProfessor()"
+              >
+                <div class="form-group">
+                  <label for="professorName">Nome</label>
+                  <input
+                    type="text"
+                    v-model="form.nome"
+                    class="form-control"
+                    required
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="professorCPF">CPF</label>
+                  <input
+                    type="text"
+                    v-model="form.cpf"
+                    class="form-control"
+                    required
+                    @input="applyCpfMask"
+                    maxlength="14"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="professorID">ID</label>
+                  <input
+                    type="text"
+                    v-model="form.id"
+                    class="form-control"
+                    required
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="professorEmail">E-mail</label>
+                  <input
+                    type="email"
+                    v-model="form.email"
+                    class="form-control"
+                    required
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="professorCargo">Cargo</label>
+                  <select v-model="form.cargo" class="form-control" required>
+                    <option value="" disabled selected>
+                      Selecione o cargo
+                    </option>
+                    <option value="responsavel_tg">Responsável de TG</option>
+                    <option value="orientador">Orientador</option>
+                    <option value="coordenador">Coordenador</option>
+                    <option value="diretor">Diretor</option>
+                  </select>
+                </div>
+                <button type="submit" class="btn btn-primary">
+                  {{ isEditing ? 'Salvar' : 'Adicionar' }}
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div v-if="successMessage" class="modal fade show" style="display: block">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-body">
+              <p>{{ successMessage }}</p>
+              <button
+                type="button"
+                class="btn btn-secondary"
+                @click="successMessage = ''"
+              >
+                Fechar
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="./src/app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,172 @@
+body {
+  background-color: #ffffff; /* Fundo da página */
+}
+
+h2 {
+  color: #ffffff; /* Cor do título */
+  font-weight: 700;
+}
+
+.table {
+  background-color: #ffffff; /* Fundo da tabela */
+}
+
+.table th,
+.table td {
+  vertical-align: middle;
+  text-align: center;
+}
+
+.table thead th {
+  background-color: #6db8ff; /* Cor de fundo do cabeçalho da tabela - azul */
+  color: #ffffff; /* Cor do texto do cabeçalho da tabela */
+}
+
+.table tbody tr:nth-of-type(odd) {
+  background-color: #e9ecef; /* Fundo das linhas ímpares da tabela */
+}
+
+.table tbody tr:nth-of-type(even) {
+  background-color: #f8f9fa; /* Fundo das linhas pares da tabela */
+}
+
+.modal-header {
+  background-color: #6db8ff; /* Cor de fundo do cabeçalho do modal */
+  color: #ffffff; /* Cor do texto do cabeçalho do modal */
+}
+
+.modal-body {
+  background-color: #f8f9fa; /* Fundo do corpo do modal */
+}
+
+.modal-footer {
+  background-color: #e9ecef; /* Fundo do rodapé do modal */
+}
+
+.btn-primary,
+.btn-success,
+.btn-danger,
+.btn-secondary {
+  margin: 0 5px;
+}
+
+.btn-primary {
+  background-color: #007bff; /* Cor de fundo do botão primário */
+  border-color: #007bff; /* Cor da borda do botão primário */
+}
+
+.btn-success {
+  background-color: #007bff; /* Cor de fundo do botão de sucesso */
+  border-color: #007bff; /* Cor da borda do botão de sucesso */
+}
+
+.btn-success:hover {
+  background-color: #007bff; /* Cor de fundo do botão de sucesso ao passar o mouse */
+  border-color: #007bff; /* Cor da borda do botão de sucesso ao passar o mouse */
+}
+
+.btn-danger {
+  background-color: #dc3545; /* Cor de fundo do botão de perigo */
+  border-color: #dc3545; /* Cor da borda do botão de perigo */
+}
+
+.btn-secondary {
+  background-color: #6db8ff; /* Cor de fundo do botão secundário */
+  border-color: #6db8ff; /* Cor da borda do botão secundário */
+}
+
+#successModal .modal-body {
+  text-align: center;
+  font-size: 1.2em;
+  color: #6db8ff; /* Cor do texto do modal de sucesso */
+}
+
+/* Estilo do botão de acessibilidade */
+.accessibility-btn {
+  background-color: #007bff;
+  border: none;
+  border-radius: 50%;
+  padding: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  margin-right: 20px; /* Distância do lado direito da navbar */
+}
+
+.accessibility-btn img {
+  width: 40px;
+  height: 40px;
+}
+
+.accessibility-btn:hover {
+  background-color: #0056b3;
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3);
+}
+
+.accessibility-btn:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(38, 143, 255, 0.5);
+}
+
+/* Menu de Acessibilidade */
+.accessibility-menu {
+  position: absolute;
+  right: 10px; /* Distância do lado direito */
+  top: 60px; /* Distância do topo da navbar */
+  background-color: white; /* Fundo do menu */
+  border: 1px solid #ccc; /* Borda do menu */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  padding: 10px; /* Espaçamento interno do menu */
+  z-index: 1000; /* Para sobrepor outros elementos */
+}
+
+.accessibility-menu button {
+  margin-bottom: 5px; /* Espaçamento entre os botões */
+}
+
+/* Estilos para modo de alto contraste */
+body.high-contrast {
+  background-color: #000; /* Fundo preto */
+  color: #ffcc00; /* Texto amarelo */
+}
+
+body.high-contrast h2 {
+  color: #ffcc00; /* Cor do título em alto contraste */
+}
+
+body.high-contrast .table {
+  background-color: #000; /* Fundo da tabela em alto contraste */
+}
+
+body.high-contrast .table th,
+body.high-contrast .table td {
+  background-color: #000; /* Fundo das células da tabela em alto contraste */
+  color: #ffcc00; /* Texto amarelo nas células da tabela */
+}
+
+body.high-contrast .modal-header {
+  background-color: #000; /* Fundo do cabeçalho do modal */
+  color: #ffcc00; /* Texto amarelo no cabeçalho do modal */
+}
+
+body.high-contrast .modal-body {
+  background-color: #333; /* Fundo do corpo do modal em alto contraste */
+  color: #ffcc00; /* Texto amarelo no corpo do modal */
+}
+
+body.high-contrast .modal-footer {
+  background-color: #444; /* Fundo do rodapé do modal em alto contraste */
+  color: #ffcc00; /* Texto amarelo no rodapé do modal */
+}
+
+/* Estilos para a navbar no modo de alto contraste */
+.high-contrast .navbar {
+  background-color: black; /* Fundo da navbar em preto */
+  color: yellow; /* Texto da navbar em amarelo */
+}
+.navbar.high-contrast .navbar-brand,
+.navbar.high-contrast .navbar-nav .nav-link {
+  color: #ffcc00; /* Texto amarelo para links */
+}
+
+.navbar.high-contrast .navbar-nav .nav-link:hover {
+  color: #fff; /* Altera a cor ao passar o mouse */
+}
